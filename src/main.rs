@@ -61,10 +61,12 @@ fn get_floor() -> i8 {
 
 fn main() {
     let mut _ascencor = Ascencor::new(-4, 12);
-    // Call the ascencor
-    println!("Please enter the floor where you are : ");
-    _ascencor.move_to_floor(get_floor());
-    // Go where you want
-    println!("Please enter the floor where you want to go : ");
-    _ascencor.move_to_floor(get_floor());
+    loop {
+        // Call the ascencor
+        println!("Please enter the floor where you are : ");
+        _ascencor.move_to_floor(get_floor());
+        // Go where you want
+        println!("Please enter the floor where you want to go : ");
+        _ascencor.move_to_floor(get_floor());
+    }
 }
