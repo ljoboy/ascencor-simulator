@@ -11,6 +11,7 @@ trait AscencorTrait {
     fn new(min_floor: i8, max_floor: i8) -> Self;
     fn check_floor(self, floor: i8) -> bool;
     fn move_to_floor(self, floor: i8) -> bool;
+    fn print_floor(self, floor: i8);
 }
 
 impl Ascencor {
@@ -34,22 +35,28 @@ impl Ascencor {
         if !self.check_floor(&floor) {
             panic!("The floor is not valid");
         }
+
+        // print the floor from the depart floor to the floor
         if self.depart < floor {
             for i in self.depart..floor {
-                println!("Floor {}", i);
-                // sleep for 2 second
-                sys_sleep(std::time::Duration::from_secs(2));
+                self.print_floor(i);
             }
         } else {
-            for i in (floor..self.depart).rev() {
-                println!("Floor {}", i);
-                // sleep for 2 second
-                sys_sleep(std::time::Duration::from_secs(2));
+            for i in (floor..=self.depart).rev() {
+                self.print_floor(i);
             }
         }
+
         self.depart = floor;
         // print that the ascencor is arrived to the floor
         println!("Arrived to floor {}", floor);
+    }
+
+    // function to print the floor
+    fn print_floor(&self, floor: i8) {
+        println!("Floor {}", floor);
+        // sleep for 2 second
+        sys_sleep(std::time::Duration::from_secs(2));
     }
 }
 
