@@ -7,13 +7,6 @@ struct Ascencor {
     depart: i8,
 }
 
-trait AscencorTrait {
-    fn new(min_floor: i8, max_floor: i8) -> Self;
-    fn check_floor(self, floor: i8) -> bool;
-    fn move_to_floor(self, floor: i8) -> bool;
-    fn print_floor(self, floor: i8);
-}
-
 impl Ascencor {
     fn new(min_floor: i8, max_floor: i8) -> Self {
         if min_floor > max_floor {
